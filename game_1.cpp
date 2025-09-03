@@ -4,29 +4,24 @@
 
 int main() {
 	const char* newMenuItems[] = {
-		"Reboot game -> press x",
 		"Start game -> press 1",
 		"Credits -> press 2",
 		"Quit game -> press Esc",
 	}; 
 
+	std::cout << "Press any key to start" << std::endl;
+	std::cin.get();
+
 start_game:
 	printWelcomeMessage();
 
 new_game_menu:
-	printMenuMessage(newMenuItems, 4);
+	printMenuMessage(newMenuItems, 3);
 	goto n_menu_update;
-
-game_menu:
-	printMenuMessage(newMenuItems, 4);
-	//goto menu_update;
 
 n_menu_update:
 	char ch = getch();
 	switch(ch){
-		case 'x':
-			goto reboot_game;
-			break;
 		case '1':
 			goto game_loop;
 			break;
@@ -42,21 +37,20 @@ n_menu_update:
 	}
 	goto n_menu_update;
 
-reboot_game:
-	printGameRebootMessage();
-	sleep(2);
-	goto start_game;
-	
 game_loop:
 	printGameLoopMessage();
 	sleep(2);
+	std::cout << "\033c" << std::endl;
 	std::system("python3 ./games/game_1.py");
-	sleep(2);
-	goto start_game; // Requires condition for game menus
+	std::cout << "Press any key to exit" << std::endl;
+	std::cin.get();
+	goto start_game;
 
 credit_roll:
 	printCredits();
 	sleep(2);
+	std::cout << "Press any key to exit" << std::endl;
+	std::cin.get();
 	goto start_game;
 
 end_game:

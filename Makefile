@@ -8,6 +8,7 @@ ${GAME}.cpp:
 	@cat ${ROOT_DIR}/${GAME}.cpp >> /dev/null
 
 clean:
+	@clear
 	@echo Cleaning generated files
 	@rm -rf *.o
 

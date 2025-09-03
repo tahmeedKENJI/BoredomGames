@@ -3,6 +3,7 @@
 #include<unistd.h>
 
 void printWelcomeMessage() {
+	std::cout << "\033c" << std::endl;
 	std::cout <<  R"(
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,6 +33,7 @@ char getch() {
  }
 
 void printClosingMessage() {
+	std::cout << "\033c" << std::endl;
 	std::cout << R"(
 QUIT
 	)" << std::endl;
@@ -60,10 +62,12 @@ GAME MENU
 }
 
 void printCredits() {
+	std::cout << "\033c" << std::endl;
 	std::cout << R"(
 CREDITS
 	)" << std::endl;
 	std::cout << "Tahmeed" << std::endl;
+	std::cout << "Ashraful" << std::endl;
 }
 
 void printGameLoopMessage() {
@@ -74,6 +78,7 @@ GAME 1 STARTING
 }
 
 void printGameRebootMessage() {
+	std::cout << "\033c" << std::endl;
 	std::cout << R"(
 REBOOT
 	)" << std::endl;
