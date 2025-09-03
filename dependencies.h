@@ -74,7 +74,7 @@ void printGameLoopMessage() {
 	std::cout << R"(
 GAME 1 STARTING
 	)" << std::endl;
-	std::cout << "Debug: Game loop encountered" << std::endl;
+	std::cout << "Game loop encountered" << std::endl;
 }
 
 void printGameRebootMessage() {
