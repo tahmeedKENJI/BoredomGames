@@ -1,11 +1,11 @@
-ROOT_DIR := ${shell pwd}
+GAME_DIR := ${shell pwd}/games/
 
 debug:
-	@echo ${ROOT_DIR}
+	@echo ${GAME_DIR}
 	@echo ${GAME}
 
 ${GAME}.cpp:
-	@cat ${ROOT_DIR}/${GAME}.cpp >> /dev/null
+	@cat ${GAME_DIR}/${GAME}.cpp >> /dev/null
 
 clean:
 	@clear
@@ -14,7 +14,7 @@ clean:
 
 compile: clean ${GAME}.cpp
 	@echo Compilation started
-	@g++ ${GAME}.cpp dependencies.h -o ${GAME}.o
+	@g++ ${GAME_DIR}/${GAME}.cpp ${GAME_DIR}/dependencies.h -o ${GAME}.o
 
 run: compile
 	@echo Starting game...
