@@ -32,6 +32,9 @@ char getch() {
  }
 
 void printClosingMessage() {
+	std::cout << R"(
+QUIT
+	)" << std::endl;
 	std::cout << "Closing games" << std::endl;
 	std::cout <<  R"(
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +50,7 @@ void printClosingMessage() {
 	)" << std::endl;
 }
 
-void printMenuMessage(char* menuItems[], int numOfItems) {
+void printMenuMessage(const char* menuItems[], int numOfItems) {
 	std::cout << R"(
 GAME MENU
 	)" << std::endl;
@@ -65,7 +68,14 @@ CREDITS
 
 void printGameLoopMessage() {
 	std::cout << R"(
-GAME LOOP
+GAME 1 STARTING
 	)" << std::endl;
 	std::cout << "Debug: Game loop encountered" << std::endl;
+}
+
+void printGameRebootMessage() {
+	std::cout << R"(
+REBOOT
+	)" << std::endl;
+	std::cout << "Rebooting. Any unsaved changes will be lost." << std::endl;
 }

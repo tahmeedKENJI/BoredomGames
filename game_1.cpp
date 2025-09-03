@@ -1,8 +1,9 @@
 #include<iostream>
+#include<cstdlib>
 #include"dependencies.h"
 
 int main() {
-	char* newMenuItems[] = {
+	const char* newMenuItems[] = {
 		"Reboot game -> press x",
 		"Start game -> press 1",
 		"Credits -> press 2",
@@ -24,7 +25,7 @@ n_menu_update:
 	char ch = getch();
 	switch(ch){
 		case 'x':
-			goto start_game;
+			goto reboot_game;
 			break;
 		case '1':
 			goto game_loop;
@@ -36,18 +37,26 @@ n_menu_update:
 			goto end_game;
 			break;
 		default:
+			goto n_menu_update;
 			break;
 	}
 	goto n_menu_update;
+
+reboot_game:
+	printGameRebootMessage();
+	sleep(2);
+	goto start_game;
 	
 game_loop:
 	printGameLoopMessage();
-	sleep(1);
+	sleep(2);
+	std::system("python3 ./games/game_1.py");
+	sleep(2);
 	goto start_game; // Requires condition for game menus
 
 credit_roll:
 	printCredits();
-	sleep(1);
+	sleep(2);
 	goto start_game;
 
 end_game:
