@@ -2,7 +2,7 @@
 #include"dependencies.h"
 
 int main() {
-	const char* newMenuItems[] = {
+	char* newMenuItems[] = {
 		"Reboot game -> press x",
 		"Start game -> press 1",
 		"Credits -> press 2",
@@ -13,36 +13,43 @@ start_game:
 	printWelcomeMessage();
 
 new_game_menu:
-	printMenuMessage(newMenuItems, 3);
+	printMenuMessage(newMenuItems, 4);
 	goto n_menu_update;
 
 game_menu:
-	printMenuMessage(newMenuItems, 3);
-	goto menu_update
+	printMenuMessage(newMenuItems, 4);
+	//goto menu_update;
 
 n_menu_update:
 	char ch = getch();
 	switch(ch){
-		case 27:
-			goto end_game;
+		case 'x':
+			goto start_game;
 			break;
 		case '1':
 			goto game_loop;
 			break;
-		case 'x':
-			goto start_game;
-			break;
 		case '2':
-			printCredits();
-			goto new_game_menu;
+			goto credit_roll;
+			break;
+		case 27:
+			goto end_game;
 			break;
 		default:
+			break;
 	}
 	goto n_menu_update;
 	
 game_loop:
-	std::cout << "Game Loop Encountered" << std::endl;
-	
+	printGameLoopMessage();
+	sleep(1);
+	goto start_game; // Requires condition for game menus
+
+credit_roll:
+	printCredits();
+	sleep(1);
+	goto start_game;
+
 end_game:
 	printClosingMessage();
 	return 0;

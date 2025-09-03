@@ -49,20 +49,23 @@ void printClosingMessage() {
 
 void printMenuMessage(char* menuItems[], int numOfItems) {
 	std::cout << R"(
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
 GAME MENU
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	)" << std::endl;
 	for (int i = 0; i < numOfItems; i++){
-		std::cout << (i+1) << ". " << menuItems[i] << std::endl; 
+		std::cout  << menuItems[i] << std::endl; 
 	}
-	std::cout << R"(
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-...
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-	)" << std::endl;
 }
 
 void printCredits() {
+	std::cout << R"(
+CREDITS
+	)" << std::endl;
 	std::cout << "Tahmeed" << std::endl;
+}
+
+void printGameLoopMessage() {
+	std::cout << R"(
+GAME LOOP
+	)" << std::endl;
+	std::cout << "Debug: Game loop encountered" << std::endl;
 }
