@@ -1,7 +1,15 @@
 import random
 
+while True:
+    limit = input("Select an upper limit: ")
+    limit = int(limit)
+    if (limit < 100000):
+        print("Upper limit is too low. Try greater than 100000")
+    else:
+        break
+
 print("Welcome to the Number Guessing Game!")
-number = random.randint(1, 100000000)
+number = random.randint(1, limit)
 attempts = 0
 invalid_attempt = 0
 
@@ -9,7 +17,7 @@ debug_mode = 0
 
 while True:
 	# input options
-    guess = input("Enter your guess (1-100000000): ")
+    guess = input(f"Enter your guess (1-{limit}): ")
     if guess == 'debug_cheat_hack':
         debug_mode = 1
     elif not guess.isdigit():
