@@ -13,8 +13,13 @@ clean:
 	@rm -rf *.o
 
 compile: clean ${GAME}.cpp
+ifeq (${GAME}, game_1)
 	@echo Compilation started
 	@g++ ${GAME_DIR}/${GAME}.cpp ${GAME_DIR}/dependencies.h -o ${GAME}.o
+else ifeq (${GAME}, game_2)
+	@echo Compilation started
+	@g++ ${GAME_DIR}/${GAME}.cpp ${GAME_DIR}/dependencies.h -o ${GAME}.o -lvulkan -lglfw
+endif
 
 run: compile
 	@echo Starting game...

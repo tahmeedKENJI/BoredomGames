@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <stdexcept>
-
+#include "dependencies.h"
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
 
@@ -86,7 +86,7 @@ int main() {
         std::cerr << e.what() << "\n";
         return EXIT_FAILURE;
     }
-
+	printClosingMessage();
     return EXIT_SUCCESS;
 }
 
