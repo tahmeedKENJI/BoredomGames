@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cstdlib>
+#include<thread>
 #include"dependencies.h"
 
 int main() {
