@@ -5,6 +5,7 @@
 int main() {
 	const char* newMenuItems[] = {
 		"Start game -> press 1",
+		"Start GUI -> press g",
 		"Credits -> press 2",
 		"Quit game -> press Esc",
 	}; 
@@ -16,7 +17,7 @@ start_game:
 	printWelcomeMessage();
 
 new_game_menu:
-	printMenuMessage(newMenuItems, 3);
+	printMenuMessage(newMenuItems, 4);
 	goto n_menu_update;
 
 n_menu_update:
@@ -24,6 +25,9 @@ n_menu_update:
 	switch(ch){
 		case '1':
 			goto game_loop;
+			break;
+		case 'g':
+			goto game_loop_gui;
 			break;
 		case '2':
 			goto credit_roll;
@@ -42,6 +46,15 @@ game_loop:
 	sleep(2);
 	std::cout << "\033c" << std::endl;
 	std::system("python3 ./games/game_1.py");
+	std::cout << "Press any key to exit" << std::endl;
+	std::cin.get();
+	goto start_game;
+
+game_loop_gui:
+	printGameLoopMessage();
+	sleep(2);
+	std::cout << "\033c" << std::endl;
+	std::system("python3 ./games/gui_game_1.py");
 	std::cout << "Press any key to exit" << std::endl;
 	std::cin.get();
 	goto start_game;
