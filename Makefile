@@ -22,15 +22,19 @@ clean:
 compile: clean ${GAME}.cpp
 ifeq (${GAME}, game_1)
 	@echo Compilation started
-	@g++ ${GAME_1_DIR}/${GAME}.cpp ${GAME_1_DIR}/dependencies.h -o ${GAME}.o
+	@g++ ${GAME_1_DIR}/${GAME}.cpp ${GAME_1_DIR}/dependencies.h -o ${GAME_1_DIR}/${GAME}.o
 else ifeq (${GAME}, game_2)
 	@echo Compilation started
-	@g++ ${GAME_2_DIR}/${GAME}.cpp ${GAME_2_DIR}/dependencies.h -o ${GAME}.o -lvulkan -lglfw
+	@g++ ${GAME_2_DIR}/${GAME}.cpp ${GAME_2_DIR}/dependencies.h -o ${GAME_2_DIR}/${GAME}.o -lvulkan -lglfw
 endif
 
 run: compile
 	@echo Starting game...
-	@./${GAME}.o
+ifeq(${GAME}, game_1)
+	@./${GAME_1_DIR}/${GAME}.o
+else ifeq(${GAME}, game_2)
+	@./${GAME_2_DIR}/${GAME}.o
+endif
 
 .PHONY: clean
 
