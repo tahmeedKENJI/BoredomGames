@@ -46,7 +46,7 @@ game_loop:
 	printGameLoopMessage();
 	sleep(2);
 	std::cout << "\033c" << std::endl;
-	std::system("python3 ./games/game_1.py");
+	std::system("python3 game_1/game_1.py");
 	std::cout << "Press any key to exit" << std::endl;
 	std::cin.get();
 	goto start_game;
@@ -55,7 +55,7 @@ game_loop_gui:
 	printGameLoopMessage();
 	sleep(2);
 	std::cout << "\033c" << std::endl;
-	std::system("python3 ./games/gui_game_1.py");
+	std::system("python3 game_1/gui_game_1.py");
 	std::cout << "Press any key to exit" << std::endl;
 	std::cin.get();
 	goto start_game;
