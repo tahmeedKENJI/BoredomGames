@@ -1,3 +1,6 @@
+SRC_FILES := ${GAME}/*.cpp
+HDR_FILES := ${GAME}/*.h
+
 debug:
 	@echo ${GAME}
 
@@ -7,20 +10,20 @@ ${GAME}.cpp:
 clean:
 	@clear
 	@echo Cleaning generated files
-	@rm -rf *.o
+	@rm -rf game_*/*.o
 
 compile: clean ./${GAME}.cpp
-ifeq (${GAME}, game_1)
+ifeq (${GAME}, game_2)
 	@echo Compilation started
-	@g++ ${GAME}/${GAME}.cpp ${GAME}/dependencies.h -o ${GAME}/${GAME}.o
-else ifeq (${GAME}, game_2)
+	@g++ ${SRC_FILES} ${HDR_FILES} -o ${GAME}/${GAME}.o -lvulkan -lglfw
+else
 	@echo Compilation started
-	@g++ ${GAME}/${GAME}.cpp ${GAME}/dependencies.h -o ${GAME}/${GAME}.o -lvulkan -lglfw
+	@g++ ${SRC_FILES} ${HDR_FILES} -o ${GAME}/${GAME}.o
 endif
 
 run:
 	@echo Starting game...
 	@${GAME}/${GAME}.o
 
-.PHONY: clean
+.PHONY: debug clean compile run
 
